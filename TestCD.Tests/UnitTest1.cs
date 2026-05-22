@@ -28,5 +28,23 @@ namespace TestCD.Tests
             int result = Assert.IsType<int>(okResult.Value);
             Assert.Equal(20, result);
         }
+        [Fact]
+        public void SubtractNumbers_WhenPositiveNumbersAreGiven_ReturnsCorrectDifference()
+        {
+            WeatherForecastController controller = new WeatherForecastController();
+            IActionResult actionResult = controller.SubtractNumbers(20, 10);
+            OkObjectResult okResult = Assert.IsType<OkObjectResult>(actionResult);
+            int result = Assert.IsType<int>(okResult.Value);
+            Assert.Equal(10, result);
+        }
+        [Fact]
+        public void SubtractNumbers_WhenNegativeNumbersAreGiven_ReturnsCorrectDifference()
+        {
+            WeatherForecastController controller = new WeatherForecastController();
+            IActionResult actionResult = controller.SubtractNumbers(-20, -10);
+            OkObjectResult okResult = Assert.IsType<OkObjectResult>(actionResult);
+            int result = Assert.IsType<int>(okResult.Value);
+            Assert.Equal(-10, result);
+        }
     }
 }

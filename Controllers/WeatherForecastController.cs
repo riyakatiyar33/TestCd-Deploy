@@ -30,5 +30,12 @@ namespace TestCD.Controllers
 
             return Ok(result);
         }
+        [HttpGet("subtract")]
+        public IActionResult SubtractNumbers(int firstNumber, int secondNumber)
+        {
+            int result = firstNumber - secondNumber;
+
+            return Ok(result);
+        }
     }
 }
