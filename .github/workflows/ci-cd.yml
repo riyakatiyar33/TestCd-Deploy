@@ -27,5 +27,15 @@ jobs:
 
       - name: Build project
         run: dotnet build --configuration Release --no-restore
+
       - name: Run test cases
         run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Push code to deploy repository
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git remote add deploy https://x-access-token:${{ secrets.DEPLOY_REPO_TOKEN }}@github.com/riyakatiyar33/TestCd-Deploy.git
+          git push deploy main --force
